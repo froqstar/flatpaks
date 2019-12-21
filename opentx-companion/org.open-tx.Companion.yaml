@@ -1,0 +1,29 @@
+id: org.opentx.Companion
+runtime: org.kde.Platform
+runtime-version: '5.12'
+sdk: org.kde.Sdk
+command: opentx-companion
+modules:
+    - name: companion
+      buildsystem: cmake
+      #config-opts: ['-DCMAKE_BUILD_TYPE=Release', '-DFIRMWARE_TARGET=OFF']
+      make-args: ['companion23']
+      sources:
+        - type: archive
+          url: https://github.com/opentx/opentx/archive/release/2.3.3.tar.gz
+          sha256: 3f5b39bdd643819166da632279fe35bfb256068bede29e17db09f4cb87738665
+        - type: archive
+          url: https://github.com/google/googletest/archive/release-1.8.1.tar.gz
+          sha256: 9bf1fe5182a604b4135edc1a425ae356c9ad15e9b23f9f12a02e80184c3a249c
+          dest: radio/src/tests/googletest-release-1.8.1
+          
+finish-args:
+    - --share=network
+    - --socket=x11
+    - --socket=wayland
+    - --filesystem=host
+    
+rename-desktop-file: companion
+rename-icon: icon.png
+copy-icon: true
+
