@@ -1,0 +1,2 @@
+# flatpaks
+flatpak manifests
